@@ -108,9 +108,7 @@ public class TitleGroupAdapter extends RecyclerView.Adapter<TitleGroupAdapter.Vi
                     // Now we provide a list of Pair items which contain the view we can transitioning
                     // from, and the name of the view it is transitioning to, in the launched activity
                     new Pair<>(view.findViewById(R.id.cover),
-                            MovieActivity.VIEW_NAME_HEADER_IMAGE),
-                    new Pair<>(view.findViewById(R.id.cover_container),
-                            MovieActivity.VIEW_NAME_COVER_CONTAINER)
+                            MovieActivity.VIEW_NAME_HEADER_IMAGE)
                     );
 
             // Now we can start the Activity, providing the activity options as a bundle

@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -48,9 +49,12 @@ public final class MoviesAPIClient {
                         coverURL = primaryImage.getString("url");
                     }
 
+                    String id = movie.getString("id");
+
                     handler.onSuccess(new Title(
                             name,
-                            coverURL
+                            coverURL,
+                            id
                     ));
 
                 } catch (JSONException e) {
@@ -79,16 +83,16 @@ public final class MoviesAPIClient {
                             JSONObject movie = results.getJSONObject(i);
                             String name = movie.getJSONObject("titleText").getString("text");
 
-                            String coverURL = null;
+                            if (movie.isNull("primaryImage")) continue;
 
-                            if (!movie.isNull("primaryImage")) {
-                                JSONObject primaryImage = movie.getJSONObject("primaryImage");
-                                coverURL = primaryImage.getString("url");
-                            }
+                            JSONObject primaryImage = movie.getJSONObject("primaryImage");
+                            String coverURL = primaryImage.getString("url");
+                            String id = movie.getString("id");
 
                             movies.add(new Title(
                                     name,
-                                    coverURL
+                                    coverURL,
+                                    id
                             ));
                         } catch (Exception e) {
                             e.printStackTrace();

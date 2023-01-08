@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.transition.Transition;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,15 +16,16 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 public class MovieActivity extends AppCompatActivity  {
 
     public static final String EXTRA_PARAM_ID = "detail:_id";
 
     public static final String VIEW_NAME_HEADER_IMAGE = "detail:header:image";
 
-    public static final String VIEW_NAME_COVER_CONTAINER = "detail:cover:container";
-
     Title title;
+    TextView contentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,8 @@ public class MovieActivity extends AppCompatActivity  {
         title = Title.getTitle(titleName);
 
         ImageView cover = findViewById(R.id.imageview_header);
-        CardView cover_container = findViewById(R.id.imageview_header_container);
+        contentName = (TextView) findViewById(R.id.movieName);
+        contentName.setText(title.getName());
 
         Log.d("url", title.getCoverURL());
         Picasso.get()
@@ -60,7 +63,6 @@ public class MovieActivity extends AppCompatActivity  {
                 });
 
         ViewCompat.setTransitionName(cover, VIEW_NAME_HEADER_IMAGE);
-        ViewCompat.setTransitionName(cover_container, VIEW_NAME_COVER_CONTAINER);
     }
 
     @RequiresApi(21)

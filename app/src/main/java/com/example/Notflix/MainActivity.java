@@ -96,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
         TitleGroupsAdapter adapter = new TitleGroupsAdapter(this, R.layout.title_group, titleGroups);
 
         RequestParams params1 = new RequestParams();
-        params1.add("titleType", "tvSeries");
+        params1.add("titleType", "movie");
+        params1.add("list", "most_pop_movies");
 
         new MoviesAPIClient().getTitles((ArrayList<Title> data) -> {
             adapter.add(new TitleGroup(data, "Popular on Netflix"));
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         RequestParams params2 = new RequestParams();
         params2.add("genre", "Drama");
-        params2.add("titleType", "tvSeries");
+        params2.add("titleType", "movie");
 
         new MoviesAPIClient().getTitles((ArrayList<Title> data) -> {
             adapter.add(new TitleGroup(data, "Trending Now"));
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
         RequestParams params3 = new RequestParams();
         params3.add("genre", "Horror");
-        params3.add("titleType", "tvSeries");
+        params3.add("titleType", "movie");
 
         new MoviesAPIClient().getTitles((ArrayList<Title> data) -> {
             adapter.add(new TitleGroup(data, "Horror Recommendations"));
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
         RequestParams params4 = new RequestParams();
         params4.add("genre", "Comedy");
-        params4.add("titleType", "tvSeries");
+        params4.add("titleType", "movie");
 
         new MoviesAPIClient().getTitles((ArrayList<Title> data) -> {
             adapter.add(new TitleGroup(data, "Comedy Recommendations"));
@@ -132,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
         RequestParams params5 = new RequestParams();
         params5.add("genre", "Action");
+        params5.add("titleType", "movie");
 
         new MoviesAPIClient().getTitles((ArrayList<Title> data) -> {
             adapter.add(new TitleGroup(data, "Popular Action Films"));
@@ -140,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
         RequestParams params6 = new RequestParams();
         params6.add("genre", "Adventure");
+        params6.add("titleType", "movie");
 
         new MoviesAPIClient().getTitles((ArrayList<Title> data) -> {
             adapter.add(new TitleGroup(data, "Popular Adventure Films"));
@@ -148,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
         RequestParams params7 = new RequestParams();
         params7.add("genre", "Romance");
+        params7.add("titleType", "movie");
 
         new MoviesAPIClient().getTitles((ArrayList<Title> data) -> {
             adapter.add(new TitleGroup(data, "Popular Romance Films"));
@@ -156,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
         RequestParams params8 = new RequestParams();
         params8.add("genre", "Sci-Fi");
+        params8.add("titleType", "movie");
 
         new MoviesAPIClient().getTitles((ArrayList<Title> data) -> {
             adapter.add(new TitleGroup(data, "Popular Sci-Fi Films"));
