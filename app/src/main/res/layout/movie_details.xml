@@ -49,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="37.5dp"
             android:textAllCaps="false"
+            android:textColor="@color/black"
             android:background="@color/white"
             android:text="Play"
             android:textStyle="bold" />
