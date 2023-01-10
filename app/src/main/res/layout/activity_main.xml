@@ -14,21 +14,7 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="15dp">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="For Mahit"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        <include layout="@layout/navbar"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -41,7 +27,7 @@
 
             <ImageView
                 android:id="@+id/spotlight"
-                android:layout_width="850px"
+                android:layout_width="840px"
                 android:layout_height="1200px"
                 tools:srcCompat="@tools:sample/avatars" />
         </androidx.cardview.widget.CardView>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:paddingHorizontal="15dp"
+    android:layout_marginBottom="15dp"
+    android:paddingVertical="5dp"
+    android:layout_marginTop="45dp">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="For Mahit"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:gravity="right"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\uf838"
+                    android:fontFamily="@font/fa_regular_brands_400"
+                    android:textColor="@color/white"
+                    android:textSize="22.5sp"
+                    >
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\uf002"
+                    android:fontFamily="@font/fa_solid_900"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="15dp"
+                    >
+                </TextView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/imageview_header_container"
+                    app:cardCornerRadius = "2dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content">
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            app:srcCompat="@drawable/user_icon" />
+                </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+</LinearLayout>

@@ -1,9 +1,12 @@
 package com.example.Notflix;
 
 import android.content.ClipData;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,11 +39,22 @@ public class MovieActivity extends AppCompatActivity  {
         Log.d("url", titleName + "");
         title = Title.getTitle(titleName);
 
+        TextView description = findViewById(R.id.description);
+        description.setText(title.getDescription());
+
         ImageView cover = findViewById(R.id.imageview_header);
         contentName = (TextView) findViewById(R.id.movieName);
         contentName.setText(title.getName());
 
-        Log.d("url", title.getCoverURL());
+        findViewById(R.id.play).setOnClickListener((View v) -> {
+            String url = "https://soap2day.ac/search/keyword/" + title.getName();
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
+
+        });
+
+
         Picasso.get()
                 .load(title.getCoverURL())
                 .networkPolicy(NetworkPolicy.OFFLINE)
@@ -64,6 +78,7 @@ public class MovieActivity extends AppCompatActivity  {
 
         ViewCompat.setTransitionName(cover, VIEW_NAME_HEADER_IMAGE);
     }
+
 
     @RequiresApi(21)
     private boolean addTransitionListener() {

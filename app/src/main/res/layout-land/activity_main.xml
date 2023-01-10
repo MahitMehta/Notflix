@@ -1,58 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/background_gradient_land"
+    android:paddingTop="15dp"
+    android:paddingBottom="5dp"
+    android:paddingLeft="15dp"
     android:orientation="vertical">
-    <LinearLayout
+    <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="For Mahit"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+        android:layout_marginTop="15dp"
+        layout="@layout/navbar"/>
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:orientation="horizontal"
-        android:paddingHorizontal="25dp"
-        android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <androidx.cardview.widget.CardView
-                    app:cardCornerRadius = "12.5dp"
-                    android:layout_gravity="center"
-                    android:foregroundGravity = "center"
-                    android:layout_centerInParent = "true"
-                    android:background="@color/black"
-                    android:backgroundTint="@color/black"
-                    android:layout_width = "wrap_content"
-                    android:layout_height = "wrap_content">
-                    <ImageView
-                        android:id="@+id/spotlight"
-                        android:layout_width="750px"
-                        android:layout_height="1200px"
-                        tools:srcCompat="@tools:sample/avatars" />
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-            <ListView
-                android:id="@+id/items"
-                android:layout_width="1000dp"
-                android:layout_height="1000dp"
-                android:padding="15dp"
-                android:visibility="visible">
+        android:id="@+id/content"
+       android:layout_width="wrap_content"
+       android:layout_height="match_parent">
+       <androidx.cardview.widget.CardView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerInParent="true"
+           android:layout_gravity="center"
+           android:backgroundTint="#00000000"
+           android:foregroundGravity="center"
+           app:cardCornerRadius="12.5dp">
 
-            </ListView>
-    </LinearLayout>
+           <ImageView
+               android:id="@+id/spotlight"
+               android:layout_width="595px"
+               android:layout_height="850px"
+               tools:srcCompat="@tools:sample/avatars" />
+       </androidx.cardview.widget.CardView>
+       <ScrollView
+           android:layout_width="wrap_content"
+           android:layout_weight="1"
+           android:layout_height="match_parent">
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:orientation="vertical"
+               tools:context=".MainActivity">
+               <ListView
+                   android:id="@+id/items"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:padding="15dp"
+                   android:visibility="visible">
+
+               </ListView>
+           </LinearLayout>
+       </ScrollView>
+   </LinearLayout>
 </LinearLayout>

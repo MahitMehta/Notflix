@@ -33,6 +33,8 @@ public final class MoviesAPIClient {
 
     public void getTitleByName(ResponseHandler<Title> handler, String name, RequestParams params) {
         params.add("limit", "1");
+        params.add("exact", "true");
+        params.add("info", "base_info");
         client.get(getAbsoluteURL("titles/search/title/" + name), params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject body) {
@@ -50,11 +52,13 @@ public final class MoviesAPIClient {
                     }
 
                     String id = movie.getString("id");
+                    String description = movie.getJSONObject("plot").getJSONObject("plotText").getString("plainText");
 
                     handler.onSuccess(new Title(
                             name,
                             coverURL,
-                            id
+                            id,
+                            description
                     ));
 
                 } catch (JSONException e) {
@@ -71,6 +75,8 @@ public final class MoviesAPIClient {
     public void getTitles(ResponseHandler<ArrayList<Title>> handler, RequestParams params) {
         params.add("sort", "year.decr");
         params.add("endYear", "2022");
+        params.add("info", "base_info");
+
         client.get(getAbsoluteURL("titles"), params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject body) {
@@ -89,10 +95,13 @@ public final class MoviesAPIClient {
                             String coverURL = primaryImage.getString("url");
                             String id = movie.getString("id");
 
+                            String description = movie.getJSONObject("plot").getJSONObject("plotText").getString("plainText");
+
                             movies.add(new Title(
                                     name,
                                     coverURL,
-                                    id
+                                    id,
+                                    description
                             ));
                         } catch (Exception e) {
                             e.printStackTrace();

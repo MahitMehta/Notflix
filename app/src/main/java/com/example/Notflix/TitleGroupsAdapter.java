@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,13 @@ public class TitleGroupsAdapter extends ArrayAdapter<TitleGroup> {
         TitleGroup group = list.get(position);
         TextView title = adapterLayout.findViewById(R.id.contentTitle);
         title.setText(group.getName());
+
+        TextView remove_genre = adapterLayout.findViewById(R.id.remove_genre);
+        remove_genre.setOnClickListener((View v) -> {
+           ((MainActivity) ctx).deleteCatagoryByName((String) title.getText());
+            this.remove(group);
+        });
+
 
         RecyclerView recyclerView = adapterLayout.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);

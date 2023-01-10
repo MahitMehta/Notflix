@@ -9,13 +9,15 @@ public class Title {
     private String name;
     private String coverURL;
     private String id;
+    private String description;
 
     public static HashMap<String, Title> titles = new HashMap<>();
 
-    public Title(String name, @Nullable String coverURL, String id) {
+    public Title(String name, @Nullable String coverURL, String id, String description) {
         this.name = name;
         this.coverURL = coverURL;
         this.id = id;
+        this.description = description;
 
         titles.put(name, this);
     }
@@ -33,6 +35,8 @@ public class Title {
     }
 
     public String toString() { return this.name; }
+
+    public String getDescription() { return this.description; }
 
     public String getId() { return id; }
 }
