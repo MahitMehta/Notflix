@@ -37,6 +37,8 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
+    <include layout="@layout/movie_specs" />
+
     <androidx.cardview.widget.CardView
         android:layout_marginTop="15dp"
         app:cardCornerRadius = "5px"

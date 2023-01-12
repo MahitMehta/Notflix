@@ -35,6 +35,7 @@ public final class MoviesAPIClient {
         params.add("limit", "1");
         params.add("exact", "true");
         params.add("info", "base_info");
+
         client.get(getAbsoluteURL("titles/search/title/" + name), params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject body) {
