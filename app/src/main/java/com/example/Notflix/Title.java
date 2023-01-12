@@ -10,14 +10,16 @@ public class Title {
     private String coverURL;
     private String id;
     private String description;
+    private String year;
 
     public static HashMap<String, Title> titles = new HashMap<>();
 
-    public Title(String name, @Nullable String coverURL, String id, String description) {
+    public Title(String name, @Nullable String coverURL, String id, String description, String year) {
         this.name = name;
         this.coverURL = coverURL;
         this.id = id;
         this.description = description;
+        this.year = year;
 
         titles.put(name, this);
     }
@@ -25,6 +27,8 @@ public class Title {
     public static Title getTitle(String name) {
         return titles.get(name);
     }
+
+    public String getYear() { return this.year; }
 
     public String getName() {
         return this.name;

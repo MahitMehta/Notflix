@@ -26,6 +26,7 @@
                     android:fontFamily="@font/fa_solid_900"
                     android:text="\uf05e"
                     android:textColor="@color/white"
+                    android:alpha="0.5"
                     android:textSize="15sp"
                     />
         </RelativeLayout>

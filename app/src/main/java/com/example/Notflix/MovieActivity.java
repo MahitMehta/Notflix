@@ -46,6 +46,9 @@ public class MovieActivity extends AppCompatActivity  {
         contentName = (TextView) findViewById(R.id.movieName);
         contentName.setText(title.getName());
 
+        TextView releaseYear = findViewById(R.id.release_year);
+        if (title.getYear() != null) releaseYear.setText(title.getYear());
+
         findViewById(R.id.play).setOnClickListener((View v) -> {
             String url = "https://soap2day.ac/search/keyword/" + title.getName();
             Intent i = new Intent(Intent.ACTION_VIEW);

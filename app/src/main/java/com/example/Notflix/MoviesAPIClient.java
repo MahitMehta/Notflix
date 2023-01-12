@@ -2,6 +2,8 @@ package com.example.Notflix;
 
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.loopj.android.http.*;
 
 import org.json.JSONArray;
@@ -54,12 +56,14 @@ public final class MoviesAPIClient {
 
                     String id = movie.getString("id");
                     String description = movie.getJSONObject("plot").getJSONObject("plotText").getString("plainText");
+                    String year = getReleaseYear(movie);
 
                     handler.onSuccess(new Title(
                             name,
                             coverURL,
                             id,
-                            description
+                            description,
+                            year
                     ));
 
                 } catch (JSONException e) {
@@ -69,8 +73,13 @@ public final class MoviesAPIClient {
         });
     }
 
-    public void getTitles(ResponseHandler<ArrayList<Title>> handler) {
-        getTitles(handler, new RequestParams());
+    public @Nullable String getReleaseYear(JSONObject movie) {
+        try {
+            return "" + movie.getJSONObject("releaseYear").getInt("year");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void getTitles(ResponseHandler<ArrayList<Title>> handler, RequestParams params) {
@@ -95,6 +104,7 @@ public final class MoviesAPIClient {
                             JSONObject primaryImage = movie.getJSONObject("primaryImage");
                             String coverURL = primaryImage.getString("url");
                             String id = movie.getString("id");
+                            String year = getReleaseYear(movie);
 
                             String description = movie.getJSONObject("plot").getJSONObject("plotText").getString("plainText");
 
@@ -102,7 +112,8 @@ public final class MoviesAPIClient {
                                     name,
                                     coverURL,
                                     id,
-                                    description
+                                    description,
+                                    year
                             ));
                         } catch (Exception e) {
                             e.printStackTrace();
